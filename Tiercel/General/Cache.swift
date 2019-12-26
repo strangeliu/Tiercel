@@ -45,7 +45,7 @@ public class Cache {
     internal let decoder = PropertyListDecoder()
     
     private final class func defaultDiskCachePathClosure(_ cacheName: String) -> String {
-        let dstPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first!
+        let dstPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         return (dstPath as NSString).appendingPathComponent(cacheName)
     }
     
@@ -61,7 +61,7 @@ public class Cache {
         let ioQueueName = "com.Tiercel.Cache.ioQueue.\(name)"
         ioQueue = DispatchQueue(label: ioQueueName)
         
-        let cacheName = "com.Daniels.Tiercel.Cache.\(name)"
+        let cacheName = "Downloads.Cache.\(name)"
         
         let diskCachePath = Cache.defaultDiskCachePathClosure(cacheName)
         
