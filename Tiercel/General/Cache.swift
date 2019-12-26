@@ -45,7 +45,7 @@ public class Cache {
     internal let decoder = PropertyListDecoder()
     
     private final class func defaultDiskCachePathClosure(_ cacheName: String) -> String {
-        let dstPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
+        let dstPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first!
         return (dstPath as NSString).appendingPathComponent(cacheName)
     }
     
