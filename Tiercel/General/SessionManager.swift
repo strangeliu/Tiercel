@@ -309,7 +309,8 @@ extension SessionManager {
     @discardableResult
     public func download(_ url: URLConvertible,
                          headers: [String: String]? = nil,
-                         fileName: String? = nil) -> DownloadTask? {
+                         fileName: String? = nil,
+                         startImmediate: Bool = true) -> DownloadTask? {
         do {
             let validURL = try url.asURL()
             var task: DownloadTask?
@@ -332,7 +333,9 @@ extension SessionManager {
                 }
                 cache.storeTasks(tasks)
             }
-            start(task!)
+            if startImmediate {
+                start(task!)
+            }
             return task
         } catch {
             TiercelLog("[manager] url error：\(url)", identifier: identifier)
